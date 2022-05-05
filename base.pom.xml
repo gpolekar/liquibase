@@ -335,7 +335,7 @@
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <configuration>
-                    <skip>true</skip>
+                    <skip>false</skip>
                 </configuration>
                 <executions>
                     <execution>
@@ -365,7 +365,7 @@
                 <artifactId>snyk-maven-plugin</artifactId>
                 <version>1.2.9</version>
                 <configuration>
-                    <skip>true</skip>
+                    <skip>false</skip>
                     <apiToken>${env.SNYK_API_TOKEN}</apiToken>
                     <failOnSeverity>high</failOnSeverity>
                     <org>${env.SNYK_ORG}</org>

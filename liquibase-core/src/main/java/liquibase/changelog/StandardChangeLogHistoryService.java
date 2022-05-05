@@ -87,6 +87,7 @@ public class StandardChangeLogHistoryService extends AbstractChangeLogHistorySer
                 throw new UnexpectedLiquibaseException(e);
             }
         }
+        Scope.getCurrentScope().getLog(getClass()).info("hasDatabaseChangeLogTable = " + hasDatabaseChangeLogTable);
         return hasDatabaseChangeLogTable;
     }
 
@@ -260,7 +261,7 @@ public class StandardChangeLogHistoryService extends AbstractChangeLogHistorySer
             }
 
 
-        } else if (!changeLogCreateAttempted) {
+        } else if (!changeLogCreateAttempted && !hasDatabaseChangeLogTable()) {
             executor.comment("Create Database Change Log Table");
             SqlStatement createTableStatement = new CreateDatabaseChangeLogTableStatement();
             if (!canCreateChangeLogTable()) {
